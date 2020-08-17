@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\menus">
+      <UniqueIdentifier>{ea6cf770-57c4-4002-a375-cdc9e24f792f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\menus\buttons">
+      <UniqueIdentifier>{31819ffe-07dd-4e3a-bf3e-1b95d5ce0c29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{d05684a6-97eb-4ae1-8a5b-12e5144a9f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game_states">
+      <UniqueIdentifier>{50b8e0b4-1304-46af-a90d-b4a19ea17f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities">
+      <UniqueIdentifier>{40d3e802-eb1d-400b-94a2-1a441f2930c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\enemies">
+      <UniqueIdentifier>{fe7564be-712e-4c2a-b797-11cdec46111a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\player">
+      <UniqueIdentifier>{ff9a4f54-6a02-4aab-aa3c-346005a5e746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities\projectiles">
+      <UniqueIdentifier>{3ab09bd8-c223-4419-a614-4f11a9012810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\custom_events">
+      <UniqueIdentifier>{386b5d38-11ab-4bea-8a80-3e02bde4e3bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\custom_events">
+      <UniqueIdentifier>{b480abdf-cc42-4b27-9e13-218e0616aa61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities">
+      <UniqueIdentifier>{524c191d-883e-4055-ab7f-7d0930ad3164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities\enemies">
+      <UniqueIdentifier>{fb77e652-18f5-496f-91a5-197ba3804650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities\player">
+      <UniqueIdentifier>{ac79a613-1875-453b-96dd-01409cc98ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities\projectiles">
+      <UniqueIdentifier>{abd9ad95-c338-40f8-8900-440bf91b4c2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game_states">
+      <UniqueIdentifier>{7cb3f913-19bc-4706-a794-87aef4d1c4f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\menus">
+      <UniqueIdentifier>{8d90c629-d2f6-4604-9e17-541dc2a6c4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\menus\buttons">
+      <UniqueIdentifier>{22c310de-1f62-4807-a312-15b00a181e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{71b01528-10d6-4eef-94c0-ab75676c6e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data">
+      <UniqueIdentifier>{d1fe2045-aea2-44be-bbb9-df620067b565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data">
+      <UniqueIdentifier>{68f622bc-f79d-401e-9057-2507ab9650fd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\custom_events\CustomEvent.h">
+      <Filter>Header Files\custom_events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\custom_events\CustomEventQueue.h">
+      <Filter>Header Files\custom_events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\Entity.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\EntityManager.h">
+      <Filter>Header Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\enemies\Enemy.h">
+      <Filter>Header Files\entities\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\enemies\EnemyType.h">
+      <Filter>Header Files\entities\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\enemies\Zombie.h">
+      <Filter>Header Files\entities\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\player\Player.h">
+      <Filter>Header Files\entities\player</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\player\PlayerSkin.h">
+      <Filter>Header Files\entities\player</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\player\WeaponType.h">
+      <Filter>Header Files\entities\player</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\projectiles\Bullet.h">
+      <Filter>Header Files\entities\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\projectiles\Projectile.h">
+      <Filter>Header Files\entities\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\files\Map.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\files\SaveData.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\files\Settings.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game_states\MainMenuState.h">
+      <Filter>Header Files\game_states</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game_states\PauseState.h">
+      <Filter>Header Files\game_states</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game_states\PlayState.h">
+      <Filter>Header Files\game_states</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game_states\ShopState.h">
+      <Filter>Header Files\game_states</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menus\Menu.h">
+      <Filter>Header Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menus\buttons\Button.h">
+      <Filter>Header Files\menus\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menus\buttons\DefaultSettingsButton.h">
+      <Filter>Header Files\menus\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\FileManager.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\Logger.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\MessageBox.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\custom_events\CustomEventQueue.cpp">
+      <Filter>Source Files\custom_events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\player\Player.cpp">
+      <Filter>Source Files\entities\player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\files\Map.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\files\SaveData.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menus\buttons\Button.cpp">
+      <Filter>Source Files\menus\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menus\buttons\DefaultSettingsButton.cpp">
+      <Filter>Source Files\menus\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\FileManager.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\Logger.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\MessageBox.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

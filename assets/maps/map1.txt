@@ -1,0 +1,6 @@
+1600 900
+assets/backgrounds/meadow.png
+20
+default
+default
+default

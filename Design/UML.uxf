@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>603</x>
+      <y>387</y>
+      <w>216</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>Game
+--
+-window: sf::RenderWindow
+-data: std::unique_ptr&lt;SaveData&gt;
+-settings: std::unique_ptr&lt;Settings&gt;
+--
+-resetSettings()
++start()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>999</x>
+      <y>63</y>
+      <w>405</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>Map
+--
+-window: sf::RenderWindow*
+-width: int
+-height: int
+-background_texture: sf::Texture
+-background: sf::Sprite
+-enemy_counts: std::vector&lt;int&gt;
+-spawn_locations: std::vector&lt;sf::IntRect&gt;
+-projectile_textures: std::vector&lt;sf::Texture&gt;
+-enemy_textures: std::vector&lt;std::vector&lt;sf::Texture\&gt;&gt;
+--
++draw()
++getWidth(): int
++getHeight(): int
++getEnemyCounts(): const std::vector&lt;int&gt;*
++getSpawnLocations(): const std::vector&lt;sf::IntRect&gt;*
++getProjectileTextures(): const std::vector&lt;sf::Texture&gt;*
++getEnemyTextures(x: EnemyType): const std::vector&lt;sf::Texture&gt;*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2322</x>
+      <y>387</y>
+      <w>189</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Zombie
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2070</x>
+      <y>387</y>
+      <w>189</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Enemy
+--
+-health: int
+-maxHealth: int
+--
++update()
++die()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2070</x>
+      <y>612</y>
+      <w>234</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>Player
+--
+-textures: std::vector&lt;sf::Texture&gt;
+-data: SaveData*
+-equipped: int
+--
++update()
++shoot(mouse_x: int, mouse_y: int)
++equip(type: WeaponType)
++unlock_weapon(type: WeaponType)
++hurt(amount: int)
++heal(amount: int)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1278</x>
+      <y>387</y>
+      <w>324</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>EntityManager
+--
+-map: Map*
+-player: Player
+-projectiles: std::list&lt;Projectile&gt;
+-enemies: std::list&lt;std::unique_ptr&lt;Enemy\&gt;&gt;
+-dead_enemies: std::queue&lt;std::unique_ptr&lt;Enemy\&gt;&gt;
+-window: sf::RenderWindow*
+-settings: const Settings*
+--
+-updatePlayer()
+-updateProjectiles()
+-updateEnemies()
++update()
++handleEvent(event sf::Event&amp;)
++draw()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1683</x>
+      <y>387</y>
+      <w>189</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>Entity
+--
+-window: sf::RenderWindow*
+-map: Map*
+#sprite: sf::Sprite
+#speed: float
+--
+/+update()/
++isTouching(obj: Entity*): bool
++move(x: int, y: int)
++draw()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2322</x>
+      <y>495</y>
+      <w>189</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Bullet
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2070</x>
+      <y>495</y>
+      <w>189</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Projectile
+--
+
+--
++update()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1863</x>
+      <y>423</y>
+      <w>225</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2250</x>
+      <y>423</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2250</x>
+      <y>540</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1593</x>
+      <y>423</y>
+      <w>108</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>747</y>
+      <w>504</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>FileManager
+--
+
+--
+_+loadMap(map_name: std::string, window: sf::RenderWindow): std::unique_ptr&lt;Map&gt;_
+_+loadSave(save_name: std::string): std::unique_ptr&lt;SaveData&gt;_
+_+writeSave(data: SaveData*, name: std::string)_
+_+loadSettings(): std::unique_ptr&lt;Settings&gt;_
+_+saveSettings(settings: Settings*)_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2106</x>
+      <y>855</y>
+      <w>126</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>SaveData
+--
++money: int
++health: int
++maxHealth: int
++baseSpeed: float
++weapons: bool[]
++ammo: int[]
++magazines: short[]
++grenades: int
+
++skins: bool[]
++active_skin: Skin
+
++kills: int[]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>360</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>SoundManager
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>225</y>
+      <w>153</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>CustomEvent
+--
++type: CustomEventType
++data: void*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2151</x>
+      <y>819</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>612</x>
+      <y>63</y>
+      <w>306</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>CustomEventQueue
+--
+-events: std::queue&lt;CustomEvent&gt;
+-mtx: std::mutex
+--
++queueEvent(x: CustomEvent)
++queueEvent(type: CustomEventType, data: void*)
++nextEvent(): CustomEvent</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>180</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>225</y>
+      <w>117</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+CustomEventType
+--
+Pause
+GameOver
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>369</x>
+      <y>27</y>
+      <w>189</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Logger
+--
+_-errLock: std::mutex_
+--
++logErr(err: std::string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1413</x>
+      <y>63</y>
+      <w>117</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+EnemyType
+--
+Zombie</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1863</x>
+      <y>423</y>
+      <w>225</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0;110.0;140.0;230.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1863</x>
+      <y>423</y>
+      <w>225</w>
+      <h>315</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0;110.0;330.0;230.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2313</x>
+      <y>612</y>
+      <w>99</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+WeaponType
+--
+Pistol</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>387</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>PlayState
+--
+-window: sf::RenderWindow*
+-view: sf::View
+-entities: EntityManager
+-map: std::unique_ptr&lt;Map&gt;
+-data: SaveData*
+--
++set(): CustomEventType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>1053</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>MainMenuState
+--
+-data: SaveData*
+-settings: Settings*
+--
+set(): CustomEventType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>639</y>
+      <w>189</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PausedState
+--
+-data: SaveData*
+--
+set(): CustomEventType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>801</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>ShopState
+--
+-data: SaveData*
+--
+set(): CustomEventType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1188</x>
+      <y>468</y>
+      <w>108</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>459</y>
+      <w>216</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>220.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>459</y>
+      <w>216</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>220.0;260.0;120.0;260.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>459</y>
+      <w>216</w>
+      <h>459</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>220.0;490.0;120.0;490.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>459</y>
+      <w>216</w>
+      <h>711</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>220.0;770.0;120.0;770.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>549</y>
+      <w>27</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>801</y>
+      <w>261</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Button
+--
+-window: sf::RenderWindow*
+-texture: sf::Texture
+-sprite: sf::Sprite
+--
+/+onClick()/
++isClicked(mouse_x: int, mouse_y: int): bool
++draw()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>369</y>
+      <w>279</w>
+      <h>351</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;struct&gt;&gt;
+Settings
+--
++fullscreen: bool
++resolution_width: int
++resolution_height: int
+
++key_primary: sf::Keyboard::Key
++key_secondary: sf::Keyboard::Key
++key_reload: sf::Keyboard::Key
++key_grenade: sf::Keyboard::Key
++key_move_up: sf::Keyboard::Key
++key_move_left: sf::Keyboard::Key
++key_move_down: sf::Keyboard::Key
++key_move_right: sf::Keyboard::Key
+
++default_background_texture_path: std::string
++default_player_texture_path: std::string
++default_projectile_texture_path: std::string
++default_enemy_texture_path: std::string
++default_button_texture_path: std::string
++default_font_path: std::string
+
++default_spawn_zones: std::vector&lt;sf::IntRect&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1323</x>
+      <y>801</y>
+      <w>207</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>Menu
+--
+-background_texture: sf::Texture
+-background: sf::Sprite
+-buttons: std::list&lt;Button&gt;
+--
++checkButtons()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1377</x>
+      <y>981</y>
+      <w>81</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+MenuType
+--
+Pause
+Shop
+Main
+Options</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1188</x>
+      <y>873</y>
+      <w>153</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1188</x>
+      <y>675</y>
+      <w>153</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;230.0;80.0;230.0;80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1188</x>
+      <y>873</y>
+      <w>153</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;80.0;10.0;80.0;300.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1521</x>
+      <y>873</y>
+      <w>81</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2313</x>
+      <y>729</y>
+      <w>99</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+PlayerSkin
+--
+Default</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>972</y>
+      <w>135</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>DefaultSettingsButton
+--
+-settings: Settings*
+--
++onClick()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1638</x>
+      <y>927</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>342</x>
+      <y>234</y>
+      <w>270</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>MessageBox
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
