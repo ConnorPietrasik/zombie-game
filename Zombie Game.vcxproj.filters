@@ -114,15 +114,6 @@
     <ClInclude Include="include\entities\projectiles\Projectile.h">
       <Filter>Header Files\entities\projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="include\files\Map.h">
-      <Filter>Header Files\data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\files\SaveData.h">
-      <Filter>Header Files\data</Filter>
-    </ClInclude>
-    <ClInclude Include="include\files\Settings.h">
-      <Filter>Header Files\data</Filter>
-    </ClInclude>
     <ClInclude Include="include\game_states\MainMenuState.h">
       <Filter>Header Files\game_states</Filter>
     </ClInclude>
@@ -153,6 +144,15 @@
     <ClInclude Include="include\util\MessageBox.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
+    <ClInclude Include="include\data\Map.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\SaveData.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="include\data\Settings.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp">
@@ -160,12 +160,6 @@
     </ClCompile>
     <ClCompile Include="src\entities\player\Player.cpp">
       <Filter>Source Files\entities\player</Filter>
-    </ClCompile>
-    <ClCompile Include="src\files\Map.cpp">
-      <Filter>Source Files\data</Filter>
-    </ClCompile>
-    <ClCompile Include="src\files\SaveData.cpp">
-      <Filter>Source Files\data</Filter>
     </ClCompile>
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
@@ -187,6 +181,12 @@
     </ClCompile>
     <ClCompile Include="src\util\MessageBox.cpp">
       <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\Map.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\SaveData.cpp">
+      <Filter>Source Files\data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

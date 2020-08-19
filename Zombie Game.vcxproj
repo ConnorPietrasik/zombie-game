@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClInclude Include="include\custom_events\CustomEvent.h" />
     <ClInclude Include="include\custom_events\CustomEventQueue.h" />
+    <ClInclude Include="include\data\Map.h" />
+    <ClInclude Include="include\data\SaveData.h" />
+    <ClInclude Include="include\data\Settings.h" />
     <ClInclude Include="include\entities\enemies\Enemy.h" />
     <ClInclude Include="include\entities\enemies\EnemyType.h" />
     <ClInclude Include="include\entities\enemies\Zombie.h" />
@@ -45,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp" />
+    <ClCompile Include="src\data\Map.cpp" />
+    <ClCompile Include="src\data\SaveData.cpp" />
     <ClCompile Include="src\entities\player\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />

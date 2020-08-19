@@ -9,8 +9,6 @@ class Game {
 	std::unique_ptr<SaveData> data;
 	std::unique_ptr<Settings> settings;
 
-	void resetSettings();
-
 public:
 	void start();
 };

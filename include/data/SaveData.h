@@ -8,6 +8,7 @@ public:
 	static const int WEAPON_COUNT = 1;
 	static const int ENEMY_COUNT = 1;
 	static const int SKIN_COUNT = 1;
+	static const int PROJECTILE_COUNT = 1;
 
 	//Gameplay data
 	int money;
