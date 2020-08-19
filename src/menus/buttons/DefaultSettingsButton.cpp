@@ -18,15 +18,13 @@ void DefaultSettingsButton::onClick() {
 	settings->key_move_right = sf::Keyboard::D;
 	
 	settings->default_background_texture_path = "assets/backgrounds/default.png";
-	settings->default_player_texture_path = "assets/player/default";
-	settings->default_projectile_texture_path = "assets/projectiles/bullet/default.png";
-	settings->default_enemy_texture_path = "assets/enemies/zombie/default.png";
+	settings->default_player_textures_path = "assets/player/default/";
+	settings->default_projectile_textures_paths.clear();
+	settings->default_projectile_textures_paths.push_back("assets/projectiles/bullet/");
+
+	settings->default_enemy_textures_paths.clear();
+	settings->default_enemy_textures_paths.push_back("assets/enemies/zombie/");
+
 	settings->default_button_texture_path = "assets/buttons/default.png";
 	settings->default_font_path = "assets/fonts/default.tff";
-
-	settings->default_spawn_zones.clear();
-	settings->default_spawn_zones.emplace_back(-100, -100, 1700, 100);
-	settings->default_spawn_zones.emplace_back(-100, 900, 1700, 100);
-	settings->default_spawn_zones.emplace_back(-100, 0, 100, 900);
-	settings->default_spawn_zones.emplace_back(1600, 0, 100, 900);
 }

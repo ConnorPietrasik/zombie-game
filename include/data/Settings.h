@@ -18,9 +18,9 @@ struct Settings {
 	sf::Keyboard::Key key_move_right;
 
 	std::string default_background_texture_path;
-	std::string default_player_texture_path;
-	std::string default_projectile_texture_path;
-	std::string default_enemy_texture_path;
+	std::string default_player_textures_path;
+	std::vector<std::string> default_projectile_textures_paths;
+	std::vector<std::string> default_enemy_textures_paths;
 	std::string default_button_texture_path;
 	std::string default_font_path;
 };
