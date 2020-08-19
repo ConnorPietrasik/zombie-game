@@ -23,6 +23,4 @@ struct Settings {
 	std::string default_enemy_texture_path;
 	std::string default_button_texture_path;
 	std::string default_font_path;
-
-	std::vector<sf::IntRect> default_spawn_zones;
 };

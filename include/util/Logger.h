@@ -6,5 +6,5 @@ class Logger {
 	static std::mutex errLock;
 
 public:
-	static void log(std::string err);
+	static void log(std::string msg);
 };
