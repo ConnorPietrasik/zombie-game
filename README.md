@@ -16,6 +16,6 @@ zombie_count: num(int)
 zombie_textures: path_to_zombie_texture1(string) path_to_zombie_texture2(string) ...
 
 ```
-Note: entities only need one texture, but can include more for some animation  
+<sub><sup>Note: entities only need one texture, but can include more for some animation  
 Note2: location and dimension integers are in pixels  
-Note3: spawn_location can be repeated as many times as desired to create more possible spawning locations. 
+Note3: spawn_location can be repeated as many times as desired to create more possible spawning locations.</sup></sub>  
