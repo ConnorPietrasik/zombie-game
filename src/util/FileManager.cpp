@@ -10,6 +10,7 @@
 #include "data/Map.h"
 #include "data/SaveData.h"
 #include "data/Settings.h"
+#include "util/Logger.h"
 
 std::unique_ptr<Map> FileManager::loadMap(std::string map_name, sf::RenderWindow window) {
 	std::ifstream in("maps/" + map_name);
@@ -22,20 +23,22 @@ std::unique_ptr<Map> FileManager::loadMap(std::string map_name, sf::RenderWindow
 	}
 	in.close();
 
-	try {
-		if (lines.size() < 1) {
+	//If unchanged means use default value
+	int width = 0;
+	int height = 0;
+	std::string background_texture_path = "";
+	std::vector<int>* enemy_counts = nullptr;
+	std::vector<std::vector<int>>* spawn_locations = nullptr;
+	std::vector<std::vector<std::string>>* projectile_texture_paths = nullptr;
+	std::vector<std::vector<std::string>>* enemy_texture_paths = nullptr;
 
+	std::regex_iterator<std::string> end;
+	for (auto& line : lines) {
+		if (line.find(':') == std::string::npos) {
+			Logger::log("NOTICE: Invalid line detected in map file " + map_name + " : " + line);
+			continue;
 		}
-		std::stringstream str(lines[0]);
-		int width, length;
-		str >> width >> length;
-		
-		std::string background_texture = lines[1];
-
-
-		
-
-	} catch (...) {
-		return std::unique_ptr<Map>(nullptr);
+		std::string tag = line.substr(0, line.find(':'));
+		std::string data = line.substr(line.find(':') + 1);
 	}
 }

@@ -11,7 +11,7 @@ MessageBox::MessageBox(sf::RenderWindow* window, Settings* settings, std::string
 
 	sf::Font font;
 	if (!font.loadFromFile(settings->default_font_path)) {
-		Logger::logErr("FATAL ERROR: Default font not found!");
+		Logger::log("FATAL ERROR: Default font not found!");
 		throw("Default font not found, please reinstall the game.");
 	}
 
