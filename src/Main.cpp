@@ -1,8 +1,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include"data/Settings.h"
-#include"util/MessageBox.h"
+#include "data/Settings.h"
+#include "util/MessageBox.h"
+#include "menus/buttons/DefaultSettingsButton.h"
+#include "util/FileManager.h"
 
 int main()
 {
@@ -22,8 +24,7 @@ int main()
 
 
     Settings settings;
-    settings.default_font_path = "assets/fonts/default.ttf";
-
+    settings;
 
     while (window.isOpen())
     {

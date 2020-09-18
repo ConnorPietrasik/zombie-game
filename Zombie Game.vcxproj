@@ -50,6 +50,7 @@
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp" />
     <ClCompile Include="src\data\Map.cpp" />
     <ClCompile Include="src\data\SaveData.cpp" />
+    <ClCompile Include="src\data\Settings.cpp" />
     <ClCompile Include="src\entities\player\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />

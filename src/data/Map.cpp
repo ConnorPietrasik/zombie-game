@@ -31,7 +31,7 @@ Map::Map(sf::RenderWindow* win, Settings* settings, int w, int h, std::string* b
 
 	if (!back_path || !background_texture.loadFromFile(*back_path)) {
 		if (back_path) Logger::log(std::string("ERROR: Background texture not found: " + *back_path));
-		if (!background_texture.loadFromFile(settings->default_background_texture_path)) {
+		if (!background_texture.loadFromFile(settings->getDefaultBackgroundTexturePath())) {
 			Logger::log(std::string("FATAL ERROR: Default background texture not found!"));
 			throw (std::string("Default background texture not found, please reinstall the program."));
 		}
@@ -67,16 +67,16 @@ Map::Map(sf::RenderWindow* win, Settings* settings, int w, int h, std::string* b
 				for (int j = 0; j < proj_paths[i].size(); j++) {
 					if (!projectile_textures[i][j].loadFromFile((*proj_paths)[i][j])) {
 						Logger::log(std::string("ERROR: Projectile texture not found: " + (*proj_paths)[i][j]));
-						if (!projectile_textures[i][j].loadFromFile(settings->default_projectile_textures_paths[i] + "0.png")) {
-							Logger::log(std::string("FATAL ERROR: Default projectile texture not found! Dir checked: " + settings->default_projectile_textures_paths[i]));
+						if (!projectile_textures[i][j].loadFromFile(settings->getDefaultProjectileTexturesDirs()[i] + "0.png")) {
+							Logger::log(std::string("FATAL ERROR: Default projectile texture not found! Dir checked: " + settings->getDefaultProjectileTexturesDirs()[i]));
 							throw (std::string("Default projectile texture not found, please reinstall the program."));
 						}
 					}
 				}
 			}
 			else {
-				if (!texturesFromDir(projectile_textures[i], settings->default_projectile_textures_paths[i])) {
-					Logger::log(std::string("FATAL ERROR: Default projectile textures not found! Dir checked: " + settings->default_projectile_textures_paths[i]));
+				if (!texturesFromDir(projectile_textures[i], settings->getDefaultProjectileTexturesDirs()[i])) {
+					Logger::log(std::string("FATAL ERROR: Default projectile textures not found! Dir checked: " + settings->getDefaultProjectileTexturesDirs()[i]));
 					throw (std::string("Default projectile textures not found, please reinstall the program."));
 				}
 			}
@@ -85,8 +85,8 @@ Map::Map(sf::RenderWindow* win, Settings* settings, int w, int h, std::string* b
 	else {
 		projectile_textures.resize(SaveData::PROJECTILE_COUNT);
 		for (int i = 0; i < SaveData::PROJECTILE_COUNT; i++) {
-			if (!texturesFromDir(projectile_textures[i], settings->default_projectile_textures_paths[i])) {
-				Logger::log(std::string("FATAL ERROR: Default projectile textures not found! Dir checked: " + settings->default_projectile_textures_paths[i]));
+			if (!texturesFromDir(projectile_textures[i], settings->getDefaultProjectileTexturesDirs()[i])) {
+				Logger::log(std::string("FATAL ERROR: Default projectile textures not found! Dir checked: " + settings->getDefaultProjectileTexturesDirs()[i]));
 				throw (std::string("Default projectile texture not found, please reinstall the program."));
 			}
 		}
@@ -100,16 +100,16 @@ Map::Map(sf::RenderWindow* win, Settings* settings, int w, int h, std::string* b
 				for (int j = 0; j < enemy_paths[i].size(); j++) {
 					if (!enemy_textures[i][j].loadFromFile((*enemy_paths)[i][j])) {
 						Logger::log(std::string("ERROR: Enemy texture not found: " + (*enemy_paths)[i][j]));
-						if (!enemy_textures[i][j].loadFromFile(settings->default_enemy_textures_paths[i] + "0.png")) {
-							Logger::log(std::string("FATAL ERROR: Default enemy texture not found! Dir checked: " + settings->default_enemy_textures_paths[i]));
+						if (!enemy_textures[i][j].loadFromFile(settings->getDefaultEnemyTexturesDirs()[i] + "0.png")) {
+							Logger::log(std::string("FATAL ERROR: Default enemy texture not found! Dir checked: " + settings->getDefaultEnemyTexturesDirs()[i]));
 							throw (std::string("Default enemy texture not found, please reinstall the program."));
 						}
 					}
 				}
 			}
 			else {
-				if (!texturesFromDir(enemy_textures[i], settings->default_enemy_textures_paths[i])) {
-					Logger::log(std::string("FATAL ERROR: Default enemy textures not found! Dir checked: " + settings->default_enemy_textures_paths[i]));
+				if (!texturesFromDir(enemy_textures[i], settings->getDefaultEnemyTexturesDirs()[i])) {
+					Logger::log(std::string("FATAL ERROR: Default enemy textures not found! Dir checked: " + settings->getDefaultEnemyTexturesDirs()[i]));
 					throw (std::string("Default enemy texture not found, please reinstall the program."));
 				}
 			}
@@ -118,8 +118,8 @@ Map::Map(sf::RenderWindow* win, Settings* settings, int w, int h, std::string* b
 	else {
 		enemy_textures.resize(SaveData::ENEMY_COUNT);
 		for (int i = 0; i < SaveData::ENEMY_COUNT; i++) {
-			if (!texturesFromDir(enemy_textures[i], settings->default_enemy_textures_paths[i])) {
-				Logger::log(std::string("FATAL ERROR: Default enemy textures not found! Dir checked: " + settings->default_enemy_textures_paths[i]));
+			if (!texturesFromDir(enemy_textures[i], settings->getDefaultEnemyTexturesDirs()[i])) {
+				Logger::log(std::string("FATAL ERROR: Default enemy textures not found! Dir checked: " + settings->getDefaultEnemyTexturesDirs()[i]));
 				throw (std::string("Default enemy texture not found, please reinstall the program."));
 			}
 		}

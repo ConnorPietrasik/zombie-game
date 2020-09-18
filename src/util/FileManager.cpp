@@ -11,7 +11,7 @@
 #include "data/Settings.h"
 #include "util/Logger.h"
 
-std::unique_ptr<Map> FileManager::loadMap(std::string& map_name, sf::RenderWindow* window, Settings* settings) {
+std::unique_ptr<Map> FileManager::loadMap(const std::string& map_name, sf::RenderWindow* window, Settings* settings) {
 	std::ifstream in("maps/" + map_name);
 	if (!in.is_open()) throw std::string("Map file not found");
 

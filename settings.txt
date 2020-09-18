@@ -1,0 +1,19 @@
+fullscreen: 0
+resolution_width: 1600
+resolution_height: 900
+
+key_primary: -1
+key_secondary: -1
+key_reload: 17
+key_grenade: 6
+key_move_up: 22
+key_move_left: 0
+key_move_down: 18
+key_move_right: 3
+
+default_background_texture_path: assets/backgrounds/default.png
+default_player_textures_path: assets/player/default/
+default_projectile_textures_paths: assets/projectiles/bullet/ 
+default_enemy_textures_paths: assets/enemies/zombie/ 
+default_button_textures_path: assets/menus/buttons/default.png
+default_font_path: assets/fonts/default.tff

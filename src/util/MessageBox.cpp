@@ -10,7 +10,7 @@ MessageBox::MessageBox(sf::RenderWindow* window, Settings* settings, std::string
 	rect.setFillColor(sf::Color::White);
 
 	sf::Font font;
-	if (!font.loadFromFile(settings->default_font_path)) {
+	if (!font.loadFromFile(settings->getDefaultFontPath())) {
 		Logger::log("FATAL ERROR: Default font not found!");
 		throw("Default font not found, please reinstall the game.");
 	}

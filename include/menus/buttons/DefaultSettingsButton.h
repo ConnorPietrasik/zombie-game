@@ -5,11 +5,12 @@
 
 
 class DefaultSettingsButton : public Button {
-	Settings* settings;
+	//Settings* settings;
 
 public:
-	DefaultSettingsButton(Settings* settings, sf::RenderWindow* window, std::string texture_path, float x, float y, 
-		float width, float height) : Button(settings, window, texture_path, x, y, width, height), settings(settings) {}
+	static Settings* settings;
+	//DefaultSettingsButton(Settings* settings, sf::RenderWindow* window, std::string texture_path, float x, float y, 
+		//float width, float height) : Button(settings, window, texture_path, x, y, width, height), settings(settings) {}
 
-	void onClick();
+	static void onClick();
 };
