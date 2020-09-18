@@ -11,11 +11,11 @@ If you want to make your own map, you can! Just make a text file with your desir
 dimensions: width(int) height(int)
 background_texture: path_to_background_texture(string)
 spawn_location: spawn.left(int) spawn.top(int) spawn.width(int) spawn.height(int)
-bullet_textures: path_to_bullet_texture1(string) path_to_bullet_texture2(string) ...
+bullet_textures: path_to_bullet_textures_dir(string)
 zombie_count: num(int)
-zombie_textures: path_to_zombie_texture1(string) path_to_zombie_texture2(string) ...
+zombie_textures: path_to_zombie_textures_dir(string)
 
 ```
-<sub><sup>Note: entities only need one texture, but can include more for some animation  
+<sub><sup>Note: entities only need one texture in the directory, but can include more for some animation  
 Note2: location and dimension integers are in pixels  
 Note3: spawn_location can be repeated as many times as desired to create more possible spawning locations.</sup></sub>  
