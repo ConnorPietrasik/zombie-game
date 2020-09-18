@@ -42,7 +42,6 @@
     <ClInclude Include="include\menus\buttons\Button.h" />
     <ClInclude Include="include\menus\buttons\DefaultSettingsButton.h" />
     <ClInclude Include="include\menus\Menu.h" />
-    <ClInclude Include="include\util\FileManager.h" />
     <ClInclude Include="include\util\Logger.h" />
     <ClInclude Include="include\util\MessageBox.h" />
   </ItemGroup>
@@ -56,7 +55,6 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\menus\buttons\Button.cpp" />
     <ClCompile Include="src\menus\buttons\DefaultSettingsButton.cpp" />
-    <ClCompile Include="src\util\FileManager.cpp" />
     <ClCompile Include="src\util\Logger.cpp" />
     <ClCompile Include="src\util\MessageBox.cpp" />
   </ItemGroup>

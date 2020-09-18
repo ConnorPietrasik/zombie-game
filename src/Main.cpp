@@ -4,7 +4,7 @@
 #include "data/Settings.h"
 #include "util/MessageBox.h"
 #include "menus/buttons/DefaultSettingsButton.h"
-#include "util/FileManager.h"
+#include "data/Map.h"
 
 int main()
 {
@@ -24,7 +24,8 @@ int main()
 
 
     Settings settings;
-    settings;
+    Map map(&window, &settings, "map1.map");
+    map;
 
     while (window.isOpen())
     {

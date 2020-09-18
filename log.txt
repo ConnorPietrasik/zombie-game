@@ -3,3 +3,11 @@
 2020 Sep 17 23:43:04	FATAL ERROR: Default font not found!
 2020 Sep 18 02:31:14	NOTICE: Invalid line detected in settings.txt: 
 2020 Sep 18 02:31:14	NOTICE: Invalid line detected in settings.txt: 
+2020 Sep 18 03:44:26	NOTICE: Invalid line detected in settings.txt: 
+2020 Sep 18 03:44:26	NOTICE: Invalid line detected in settings.txt: 
+2020 Sep 18 03:44:26	NOTICE: Invalid line detected in map file map1.map: background_texture:
+2020 Sep 18 03:44:26	NOTICE: Invalid line detected in map file map1.map: assets/backgrounds/meadow.png
+2020 Sep 18 03:44:40	NOTICE: Invalid line detected in settings.txt: 
+2020 Sep 18 03:44:40	NOTICE: Invalid line detected in settings.txt: 
+2020 Sep 18 03:44:40	NOTICE: Invalid line detected in map file map1.map: background_texture:
+2020 Sep 18 03:44:40	NOTICE: Invalid line detected in map file map1.map: assets/backgrounds/meadow.png
