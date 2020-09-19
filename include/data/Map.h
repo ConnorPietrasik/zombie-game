@@ -21,10 +21,14 @@ public:
 	//Initialize the map, for default values in the middle use nullptr for ptrs and 0 for ints
 	Map(sf::RenderWindow* window, Settings* settings, const std::string& name);
 
-	void draw();
-	const int getWidth() const { return width; }
-	const int getHeight() const { return height; }
-	const std::vector<int>* getEnemyCounts() const { return &enemy_counts; }
-	const std::vector< std::vector<sf::Texture>>* getProjectileTextures() const { return &projectile_textures; }
-	const std::vector<sf::Texture>* getEnemyTextures(EnemyType x) const { return &enemy_textures[static_cast<short>(x)]; }
+	bool validPosition(sf::Vector2i pos) { return background.getTextureRect().contains(pos); }
+	bool validPosition(int x, int y) { return background.getTextureRect().contains(x, y); }
+	void draw() const { window->draw(background); }
+
+
+	int getWidth() const { return width; }
+	int getHeight() const { return height; }
+	const std::vector<int>* getEnemyCounts() { return &enemy_counts; }
+	const std::vector<std::vector<sf::Texture>>* getProjectileTextures() { return &projectile_textures; }
+	const std::vector<sf::Texture>* getEnemyTextures(EnemyType x) { return &enemy_textures[static_cast<short>(x)]; }
 };

@@ -1,10 +1,15 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <chrono>
+#include <thread>
 
 #include "data/Settings.h"
 #include "util/MessageBox.h"
 #include "menus/buttons/DefaultSettingsButton.h"
 #include "data/Map.h"
+#include "data/SaveData.h"
+#include "entities/player/Player.h"
+#include <iostream>
 
 int main()
 {
@@ -18,17 +23,17 @@ int main()
     // Create a graphical text to display
     // Load a music to play
 
-    sf::Texture tex1;
-    tex1.loadFromFile("assets/player/default/pistol-firing.png");
-    sf::Sprite spr1(tex1);
-
 
     Settings settings;
+    SaveData save("test");
     Map map(&window, &settings, "map1.map");
-    map;
+    Player player(&window, &map, &save, &settings);
+
+    const auto MS_PER_FRAME = std::chrono::milliseconds(10);
 
     while (window.isOpen())
     {
+        auto start = std::chrono::steady_clock::now();
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -36,19 +41,19 @@ int main()
             // Close window: exit
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::KeyPressed) {
-                MessageBox test(&window, &settings, "THIS IS A TEST");
-            }
         }
         // Clear screen
         window.clear();
 
+        player.update();
+
         // Draw the sprite
-        window.draw(sprite);
-        window.draw(spr1);
+        map.draw();
+        player.draw();
 
         // Update the window
         window.display();
+        std::this_thread::sleep_for(MS_PER_FRAME + start - std::chrono::steady_clock::now());
     }
     return EXIT_SUCCESS;
 }

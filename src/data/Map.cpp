@@ -43,7 +43,7 @@ Map::Map(sf::RenderWindow* win, Settings* settings, const std::string& name) : w
 
 	//Loading the map from the file
 	std::string line;
-	while (in >> line) {
+	while (std::getline(in, line)) {
 		int semicolon_pos = line.find(':');
 		if (semicolon_pos == std::string::npos || semicolon_pos == line.length()) {
 			Logger::log("NOTICE: Invalid line detected in map file " + name + ": " + line);
