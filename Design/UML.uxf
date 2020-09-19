@@ -173,6 +173,7 @@ fontsize=10
 +setPosition(x: int, y: int)
 +getPosition(): sf::Vector2f
 +getAngle(pos: sf::Vector2f): float
++getAngle(pos: sf::Vector2i): float
 +draw()</panel_attributes>
     <additional_attributes/>
   </element>

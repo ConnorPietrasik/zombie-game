@@ -1,5 +1,5 @@
 #include "entities/enemies/Enemy.h"
 
 void Enemy::update() {
-	move(getAngle(player->getCenter()));
+	move(getAngle(player->getPosition()));
 }
