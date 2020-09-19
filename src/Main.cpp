@@ -9,7 +9,7 @@
 #include "data/Map.h"
 #include "data/SaveData.h"
 #include "entities/player/Player.h"
-#include <iostream>
+#include "entities/enemies/Zombie.h"
 
 int main()
 {
@@ -28,6 +28,7 @@ int main()
     SaveData save("test");
     Map map(&window, &settings, "map1.map");
     Player player(&window, &map, &save, &settings);
+    Zombie zombie(&window, &map, &player, 1000, 700);
 
     const auto MS_PER_FRAME = std::chrono::milliseconds(10);
 
@@ -46,10 +47,12 @@ int main()
         window.clear();
 
         player.update();
+        zombie.update();
 
         // Draw the sprite
         map.draw();
         player.draw();
+        zombie.draw();
 
         // Update the window
         window.display();

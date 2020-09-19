@@ -12,8 +12,9 @@ protected:
 	int health;
 
 public:
-	Entity(sf::RenderWindow* window, Map* map, const sf::Texture* texture, float speed = 1.5f, int health = 1) : window(window), map(map), speed(speed), health(health) {
+	Entity(sf::RenderWindow* window, Map* map, const sf::Texture* texture, int x, int y, float speed = 1.5f, int health = 1) : window(window), map(map), speed(speed), health(health) {
 		sprite.setTexture(*texture);
+		setPosition(x, y);
 	}
 
 	//Added because Player manages its own textures
@@ -25,6 +26,7 @@ public:
 	void move(float rad);
 	void setPosition(int x, int y);
 	sf::Vector2f getPosition() { return sprite.getPosition(); }
-	float getAngle(sf::Vector2f pos) { return atan2(pos.y - sprite.getPosition().y, pos.x - sprite.getPosition().x); }
+	sf::Vector2f getCenter() { return sf::Vector2f(sprite.getPosition().x + (sprite.getTextureRect().width / 2), sprite.getPosition().y + (sprite.getTextureRect().height / 2)); }
+	float getAngle(sf::Vector2f pos) { return atan2(pos.y - (sprite.getPosition().y + (sprite.getTextureRect().height / 2)), pos.x - (sprite.getPosition().x + (sprite.getTextureRect().width / 2))); }
 	void draw();
 };

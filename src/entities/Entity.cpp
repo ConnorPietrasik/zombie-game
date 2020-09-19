@@ -1,5 +1,4 @@
 #include "entities/Entity.h"
-#include <iostream>
 
 bool Entity::isTouching(Entity* obj) {
 	return sprite.getTextureRect().intersects(obj->sprite.getTextureRect());
@@ -11,7 +10,6 @@ void Entity::move(float x_offset, float y_offset) {
 
 void Entity::move(float rad) {
 	move(speed * cos(rad), speed * sin(rad));
-	std::cout << "x: " << speed * cos(rad) << " y: " << speed * sin(rad) << "\tCHECK: " << sqrt(speed * cos(rad) * speed * cos(rad) + speed * sin(rad) * speed * sin(rad)) << '\n';
 }
 
 void Entity::setPosition(int x, int y) {
