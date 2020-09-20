@@ -191,5 +191,8 @@
     <ClCompile Include="src\entities\enemies\Enemy.cpp">
       <Filter>Source Files\entities\enemies</Filter>
     </ClCompile>
+    <ClCompile Include="src\entities\EntityManager.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

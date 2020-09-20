@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 #include "data/Settings.h"
 #include "util/MessageBox.h"
@@ -10,6 +11,7 @@
 #include "data/SaveData.h"
 #include "entities/player/Player.h"
 #include "entities/enemies/Zombie.h"
+#include "entities/EntityManager.h"
 
 int main()
 {
@@ -27,8 +29,7 @@ int main()
     Settings settings;
     SaveData save("test");
     Map map(&window, &settings, "map1.map");
-    Player player(&window, &map, &save, &settings);
-    Zombie zombie(&window, &map, &player, 1000, 700);
+    EntityManager entities(&map, &window, &save, &settings);
 
     const auto MS_PER_FRAME = std::chrono::milliseconds(10);
 
@@ -45,18 +46,22 @@ int main()
         }
         // Clear screen
         window.clear();
-
-        player.update();
-        zombie.update();
+        
+        //Update
+        entities.update();
 
         // Draw the sprite
         map.draw();
-        player.draw();
-        zombie.draw();
+        entities.draw();
 
         // Update the window
         window.display();
-        std::this_thread::sleep_for(MS_PER_FRAME + start - std::chrono::steady_clock::now());
+
+        //TESTING
+        auto time = MS_PER_FRAME + start - std::chrono::steady_clock::now();
+        std::cout << "Sleeping for: " << std::chrono::duration_cast<std::chrono::milliseconds>(time).count() << "ms\n";
+
+        std::this_thread::sleep_for(time);
     }
     return EXIT_SUCCESS;
 }

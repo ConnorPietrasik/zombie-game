@@ -28,7 +28,8 @@ public:
 
 	int getWidth() const { return width; }
 	int getHeight() const { return height; }
-	const std::vector<int>* getEnemyCounts() { return &enemy_counts; }
-	const std::vector<std::vector<sf::Texture>>* getProjectileTextures() { return &projectile_textures; }
-	const std::vector<sf::Texture>* getEnemyTextures(EnemyType x) { return &enemy_textures[static_cast<short>(x)]; }
+	const std::vector<int>& getEnemyCounts() { return enemy_counts; }
+	const std::vector<sf::IntRect>& getSpawnLocations() { return spawn_locations; }
+	const std::vector<std::vector<sf::Texture>>& getProjectileTextures() { return projectile_textures; }
+	const std::vector<sf::Texture>& getEnemyTextures(EnemyType x) { return enemy_textures[static_cast<short>(x)]; }
 };

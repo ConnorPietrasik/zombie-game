@@ -52,6 +52,7 @@
     <ClCompile Include="src\data\Settings.cpp" />
     <ClCompile Include="src\entities\enemies\Enemy.cpp" />
     <ClCompile Include="src\entities\Entity.cpp" />
+    <ClCompile Include="src\entities\EntityManager.cpp" />
     <ClCompile Include="src\entities\player\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
