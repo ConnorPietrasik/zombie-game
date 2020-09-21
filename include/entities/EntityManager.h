@@ -13,7 +13,7 @@
 class EntityManager {
 	Map* map;
 	Player player;
-	std::list<Projectile> projectiles;
+	std::list<std::unique_ptr<Projectile>> projectiles;
 	std::list<std::unique_ptr<Enemy>> enemies;
 	std::queue<std::unique_ptr<Enemy>> dead_enemies;
 	sf::RenderWindow* window;

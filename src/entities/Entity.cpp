@@ -1,7 +1,11 @@
 #include "entities/Entity.h"
 
 bool Entity::isTouching(Entity* obj) {
-	return sprite.getTextureRect().intersects(obj->sprite.getTextureRect());
+	return getDistanceSquared(obj->getPosition()) <= pow(radius + obj->radius, 2);
+}
+
+bool Entity::isTouching(sf::Vector2f pos) {
+	return getDistanceSquared(pos) <= pow(radius, 2);
 }
 
 void Entity::move(float x_offset, float y_offset) {
@@ -17,5 +21,11 @@ void Entity::setPosition(int x, int y) {
 }
 
 void Entity::draw() {
+	//TESTING
+	sf::CircleShape r(radius);
+	r.setOrigin(radius, radius);
+	r.setPosition(sprite.getPosition());
+	window->draw(r);
+
 	window->draw(sprite);
 }

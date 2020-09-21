@@ -59,7 +59,7 @@ int main()
 
         //TESTING
         auto time = MS_PER_FRAME + start - std::chrono::steady_clock::now();
-        std::cout << "Sleeping for: " << std::chrono::duration_cast<std::chrono::milliseconds>(time).count() << "ms\n";
+        //std::cout << "Sleeping for: " << std::chrono::duration_cast<std::chrono::milliseconds>(time).count() << "ms\n";
 
         std::this_thread::sleep_for(time);
     }

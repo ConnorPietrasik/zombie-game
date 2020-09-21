@@ -95,6 +95,7 @@ fontsize=10
 --
 -max_health: int
 -player: Player*
+std::list&lt;Enemy&gt;
 --
 +update()
 +die()</panel_attributes>
@@ -136,7 +137,7 @@ fontsize=10
 --
 -map: Map*
 -player: Player
--projectiles: std::list&lt;Projectile&gt;
+-projectiles: std::list&lt;std::unique_ptr&lt;Projectile\&gt;&gt;
 -enemies: std::list&lt;std::unique_ptr&lt;Enemy\&gt;&gt;
 -dead_enemies: std::queue&lt;std::unique_ptr&lt;Enemy\&gt;&gt;
 -window: sf::RenderWindow*
@@ -202,7 +203,7 @@ fontsize=10
     </coordinates>
     <panel_attributes>Projectile
 --
-
+-direction: float
 --
 +update()</panel_attributes>
     <additional_attributes/>

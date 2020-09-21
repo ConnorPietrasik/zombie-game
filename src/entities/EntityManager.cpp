@@ -20,7 +20,7 @@ void EntityManager::updatePlayer() {
 }
 
 void EntityManager::updateProjectiles() {
-	for (auto& p : projectiles) p.update();
+	for (auto& p : projectiles) p->update();
 }
 
 void EntityManager::updateEnemies() {
@@ -35,12 +35,12 @@ void EntityManager::spawnEnemy(EnemyType type, int amount) {
 	for (int i = 0; i < amount; i++) {
 		auto locs = map->getSpawnLocations();
 		int area = rand() % locs.size();
-		enemies.push_back(std::make_unique<Zombie>(window, map, &player, locs[area].left + rand() % locs[area].width, locs[area].top + rand() % locs[area].height));
+		enemies.push_back(std::make_unique<Zombie>(window, map, &player, enemies, locs[area].left + rand() % locs[area].width, locs[area].top + rand() % locs[area].height));
 	}
 }
 
 void EntityManager::draw() {
 	player.draw();
-	for (auto& p : projectiles) p.draw();
+	for (auto& p : projectiles) p->draw();
 	for (auto& e : enemies) e->draw();
 }
