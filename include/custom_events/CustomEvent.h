@@ -2,7 +2,8 @@
 enum class CustomEventType : unsigned short {
 	Undef = -1,
 	Pause,
-	GameOver
+	GameOver,
+	Exit
 };
 
 

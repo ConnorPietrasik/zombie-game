@@ -194,5 +194,8 @@
     <ClCompile Include="src\entities\EntityManager.cpp">
       <Filter>Source Files\entities</Filter>
     </ClCompile>
+    <ClCompile Include="include\game_states\PlayState.cpp">
+      <Filter>Source Files\game_states</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -29,7 +29,6 @@ void EntityManager::updateEnemies() {
 
 void EntityManager::spawnEnemy(EnemyType type, int amount) {
 
-	//I just learned about brace-initialization like this, braces make default object
 	static std::minstd_rand rand(std::random_device{}());
 
 	for (int i = 0; i < amount; i++) {

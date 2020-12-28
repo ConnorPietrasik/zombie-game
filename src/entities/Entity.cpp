@@ -22,10 +22,10 @@ void Entity::setPosition(int x, int y) {
 
 void Entity::draw() {
 	//TESTING
-	sf::CircleShape r(radius);
+	/*sf::CircleShape r(radius);
 	r.setOrigin(radius, radius);
 	r.setPosition(sprite.getPosition());
-	window->draw(r);
+	window->draw(r);*/
 
 	window->draw(sprite);
 }

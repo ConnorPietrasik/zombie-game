@@ -1,10 +1,7 @@
 #include "entities/enemies/Enemy.h"
 
 
-//TESTING
-#include<iostream>
-
-//Throwing this up here so it's consistent within the class
+//Throwing this up here so it's consistent within the methods
 const float PI = 3.1415927f;
 
 //I'll work on improving efficiency and what not once I get everything to a working state

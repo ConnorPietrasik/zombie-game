@@ -8,13 +8,13 @@
 
 class PlayState {
 	sf::RenderWindow* window;
-	sf::View view;
+	//sf::View view;
 	EntityManager entities;
-	std::unique_ptr<Map> map;
+	Map* map;
 	SaveData* data;
 
 public:
-	PlayState(sf::RenderWindow* window, std::unique_ptr<Map> map, SaveData* data) : window(window), map(std::move(map)), data(data), entities(map.get(), window, data) {}
+	PlayState(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings) : window(window), map(std::move(map)), data(data), entities(map, window, data, settings) {}
 
 	CustomEventType set();
 };

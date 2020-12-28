@@ -46,6 +46,7 @@
     <ClInclude Include="include\util\MessageBox.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\game_states\PlayState.cpp" />
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp" />
     <ClCompile Include="src\data\Map.cpp" />
     <ClCompile Include="src\data\SaveData.cpp" />
