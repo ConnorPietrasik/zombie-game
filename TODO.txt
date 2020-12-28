@@ -1,0 +1,37 @@
+HIGHEST PRIORITY:
+
+Add limits to shooting speed
+
+Add magazines / reloading
+
+Make bullets kill things
+
+Improve spawning, so it's over time and can't be inside each other
+
+Make a menu to enter game
+
+Add damage / death when zombies touch player
+
+Game over screen
+
+
+MODERATE PRIORITY:
+
+Pause menu
+
+Optimize hit detection, probably separating screen into quarters recursively
+
+
+LOW PRIORITY:
+
+High scores?
+
+Shop?
+
+Add new weapons
+
+Add new enemy types
+
+Map selection
+
+Other mode(s?) aside from hoard

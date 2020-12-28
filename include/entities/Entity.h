@@ -3,10 +3,10 @@
 #include "data/Map.h"
 
 class Entity {
-	Map* map;
 
 protected:
 	sf::RenderWindow* window;
+	Map* map;
 	sf::Sprite sprite;
 	float speed;
 	int health;

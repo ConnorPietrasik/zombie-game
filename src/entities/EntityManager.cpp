@@ -3,7 +3,7 @@
 #include <random>
 #include "entities/enemies/Zombie.h"
 
-EntityManager::EntityManager(Map* map, sf::RenderWindow* window, SaveData* data, Settings* settings) : map(map), window(window), player(window, map, data, settings), settings(settings) {
+EntityManager::EntityManager(Map* map, sf::RenderWindow* window, SaveData* data, Settings* settings) : map(map), window(window), player(window, map, data, settings, projectiles), settings(settings) {
 	for (int type = 0; type < map->getEnemyCounts().size(); type++) {
 		spawnEnemy(static_cast<EnemyType>(type), map->getEnemyCounts()[type]);
 	}
@@ -20,7 +20,14 @@ void EntityManager::updatePlayer() {
 }
 
 void EntityManager::updateProjectiles() {
-	for (auto& p : projectiles) p->update();
+
+	//Can't use the easy foreach because it breaks when you remove from the middle
+	for (auto i = projectiles.begin(); i != projectiles.end();) {
+		(*i)->update();
+		if ((*i)->getPosition().x > map->getWidth() + 10 || (*i)->getPosition().x < -10 || (*i)->getPosition().y > map->getHeight() + 10 || (*i)->getPosition().y < -10) projectiles.remove(*i++);
+		else ++i;
+	}
+
 }
 
 void EntityManager::updateEnemies() {
@@ -34,7 +41,7 @@ void EntityManager::spawnEnemy(EnemyType type, int amount) {
 	for (int i = 0; i < amount; i++) {
 		auto locs = map->getSpawnLocations();
 		int area = rand() % locs.size();
-		enemies.push_back(std::make_unique<Zombie>(window, map, &player, enemies, locs[area].left + rand() % locs[area].width, locs[area].top + rand() % locs[area].height));
+		if (type == EnemyType::Zombie) enemies.push_back(std::make_unique<Zombie>(window, map, &player, enemies, locs[area].left + rand() % locs[area].width, locs[area].top + rand() % locs[area].height));
 	}
 }
 

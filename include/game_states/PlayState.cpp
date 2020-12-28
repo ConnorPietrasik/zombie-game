@@ -8,8 +8,6 @@ const auto MS_PER_FRAME = std::chrono::milliseconds(10);
 
 CustomEventType PlayState::set() {
 
-    Bullet b(window, map, map->getWidth() / 2, map->getHeight() / 2, 0);
-
     while (window->isOpen())
     {
         auto start = std::chrono::steady_clock::now();
@@ -29,12 +27,6 @@ CustomEventType PlayState::set() {
 
         map->draw();
         entities.draw();
-
-
-        //TESTING
-        b.update();
-        b.draw();
-
 
         window->display();
 
