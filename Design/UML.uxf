@@ -157,7 +157,7 @@ std::list&lt;Enemy&gt;
       <x>1620</x>
       <y>324</y>
       <w>189</w>
-      <h>189</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>Entity
 --
@@ -166,6 +166,7 @@ std::list&lt;Enemy&gt;
 #sprite: sf::Sprite
 #speed: float
 #health: int
+#radius: float
 --
 /+update()/
 +isTouching(Entity*): bool

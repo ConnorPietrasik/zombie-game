@@ -20,7 +20,7 @@ public:
 	}
 
 	//Added because Player manages its own textures
-	Entity(sf::RenderWindow* window, Map* map, float speed = 1.5f, int health = 100) : window(window), map(map), speed(speed), health(health) {}
+	Entity(sf::RenderWindow* window, Map* map, float radius, float speed = 1.5f, int health = 100) : window(window), map(map), speed(speed), health(health), radius(radius) {}
 
 	virtual void update() = 0;
 	bool isTouching(Entity* obj);

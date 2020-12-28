@@ -6,7 +6,7 @@
 //Throwing this up here so it's consistent within the class
 const float PI = 3.1415927f;
 
-Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings) : Entity(window, map, data->getBaseSpeed(), data->getMaxHealth()), data(data), settings(settings), equipped(WeaponType::Pistol) {
+Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings) : Entity(window, map, 30, data->getBaseSpeed(), data->getMaxHealth()), data(data), settings(settings), equipped(WeaponType::Pistol) {
 	switch (data->getActiveSkin()) {
 	case PlayerSkin::Default: {
 		textures.resize(SaveData::WEAPON_COUNT);

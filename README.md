@@ -6,7 +6,7 @@ Just a simple little zombie game I'm making for fun using SFML, and making my ow
 If anything goes wrong, please send an email to cpzombiedev@gmail.com with a detailed description of your problem. Please be sure to attach the log file.
 
 ## Map Creation
-If you want to make your own map, you can! Just make a text file with your desired options, and save it with a .map extension in the maps folder. Any options not specified will be default. List of currently supported options, and their formats (type them as shown, "option: parameters"):
+To create a map just make a text file with your desired options, and save it with a .map extension in the maps folder. Any options not specified will be default. List of currently supported options, and their formats (type them as shown, "option: parameters"):
 ```
 dimensions: width(int) height(int)
 background_texture: path_to_background_texture(string)
