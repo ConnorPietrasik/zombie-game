@@ -12,39 +12,41 @@ Settings::Settings() {
 	if (in.is_open()) {
 		std::string line;
 		while (std::getline(in, line)) {
-			int semicolon_pos = line.find(':');
-			if (semicolon_pos == std::string::npos || semicolon_pos == line.length()) {
-				Logger::log("NOTICE: Invalid line detected in settings.txt: " + line);
-				continue;
-			}
-			std::string tag = line.substr(0, semicolon_pos);
-			std::string data = line.substr(semicolon_pos + 2);	//+2 to ignore the leading space
+			if (line.find_first_not_of(' ') != std::string::npos) {
+				int semicolon_pos = line.find(':');
+				if (semicolon_pos == std::string::npos || semicolon_pos == line.length()) {
+					Logger::log("NOTICE: Invalid line detected in settings.txt: " + line);
+					continue;
+				}
+				std::string tag = line.substr(0, semicolon_pos);
+				std::string data = line.substr(semicolon_pos + 2);	//+2 to ignore the leading space
 
-			if (tag == "fullscreen") fullscreen = (data == "true") ? true : false;
-			else if (tag == "resolution_width") resolution_width = std::stoi(data);
-			else if (tag == "resolution_height") resolution_height = std::stoi(data);
-			else if (tag == "key_primary") key_primary = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_secondary") key_secondary = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_reload") key_reload = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_grenade") key_grenade = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_move_up") key_move_up = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_move_left") key_move_left = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_move_down") key_move_down = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "key_move_right") key_move_right = static_cast<sf::Keyboard::Key>(std::stoi(data));
-			else if (tag == "default_background_texture_path") default_background_texture_path = data;
-			else if (tag == "default_player_textures_dir") default_player_textures_dir = data;
-			else if (tag == "default_projectile_textures_dirs") {
-				std::stringstream strm(data);
-				std::string dir;
-				while (strm >> dir) default_projectile_textures_dirs.push_back(dir);
+				if (tag == "fullscreen") fullscreen = (data == "true") ? true : false;
+				else if (tag == "resolution_width") resolution_width = std::stoi(data);
+				else if (tag == "resolution_height") resolution_height = std::stoi(data);
+				else if (tag == "key_primary") key_primary = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_secondary") key_secondary = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_reload") key_reload = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_grenade") key_grenade = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_move_up") key_move_up = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_move_left") key_move_left = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_move_down") key_move_down = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "key_move_right") key_move_right = static_cast<sf::Keyboard::Key>(std::stoi(data));
+				else if (tag == "default_background_texture_path") default_background_texture_path = data;
+				else if (tag == "default_player_textures_dir") default_player_textures_dir = data;
+				else if (tag == "default_projectile_textures_dirs") {
+					std::stringstream strm(data);
+					std::string dir;
+					while (strm >> dir) default_projectile_textures_dirs.push_back(dir);
+				}
+				else if (tag == "default_enemy_textures_dirs") {
+					std::stringstream strm(data);
+					std::string dir;
+					while (strm >> dir) default_enemy_textures_dirs.push_back(dir);
+				}
+				else if (tag == "default_button_texture_path") default_button_texture_path = data;
+				else if (tag == "default_font_path") default_font_path = data;
 			}
-			else if (tag == "default_enemy_textures_dirs") {
-				std::stringstream strm(data);
-				std::string dir;
-				while (strm >> dir) default_enemy_textures_dirs.push_back(dir);
-			}
-			else if (tag == "default_button_texture_path") default_button_texture_path = data;
-			else if (tag == "default_font_path") default_font_path = data;
 		}
 		in.close();
 	}
