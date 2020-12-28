@@ -1,5 +1,5 @@
 #pragma once
-enum class CustomEventType : unsigned short {
+enum class CustomEventType : short {
 	Undef = -1,
 	Pause,
 	GameOver,

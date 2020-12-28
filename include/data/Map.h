@@ -3,6 +3,7 @@
 #include <string>
 #include "util/Logger.h"
 #include "entities/enemies/EnemyType.h"
+#include "entities/projectiles/ProjectileType.h"
 #include "data/Settings.h"
 
 class Map {
@@ -30,6 +31,6 @@ public:
 	int getHeight() const { return height; }
 	const std::vector<int>& getEnemyCounts() { return enemy_counts; }
 	const std::vector<sf::IntRect>& getSpawnLocations() { return spawn_locations; }
-	const std::vector<std::vector<sf::Texture>>& getProjectileTextures() { return projectile_textures; }
+	const std::vector<sf::Texture>& getProjectileTextures(ProjectileType x) { return projectile_textures[static_cast<short>(x)]; }
 	const std::vector<sf::Texture>& getEnemyTextures(EnemyType x) { return enemy_textures[static_cast<short>(x)]; }
 };

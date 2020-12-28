@@ -150,6 +150,9 @@
     <ClInclude Include="include\data\Settings.h">
       <Filter>Header Files\data</Filter>
     </ClInclude>
+    <ClInclude Include="include\entities\projectiles\ProjectileType.h">
+      <Filter>Header Files\entities\projectiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="include\game_states\PlayState.cpp">
       <Filter>Source Files\game_states</Filter>
+    </ClCompile>
+    <ClCompile Include="include\entities\projectiles\Projectile.cpp">
+      <Filter>Source Files\entities\projectiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

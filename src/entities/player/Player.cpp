@@ -16,6 +16,7 @@ Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* set
 	sprite.setTexture(textures[static_cast<int>(WeaponType::Pistol)]);
 	sprite.setOrigin(sprite.getTextureRect().width / 2, sprite.getTextureRect().height / 2);
 	sprite.setPosition(map->getWidth() / 2, map->getHeight() / 2);
+	for (short& m : magazines) m = 0;
 }
 
 void Player::move() {

@@ -34,6 +34,7 @@
     <ClInclude Include="include\entities\player\WeaponType.h" />
     <ClInclude Include="include\entities\projectiles\Bullet.h" />
     <ClInclude Include="include\entities\projectiles\Projectile.h" />
+    <ClInclude Include="include\entities\projectiles\ProjectileType.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\game_states\MainMenuState.h" />
     <ClInclude Include="include\game_states\PauseState.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="include\util\MessageBox.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\entities\projectiles\Projectile.cpp" />
     <ClCompile Include="include\game_states\PlayState.cpp" />
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp" />
     <ClCompile Include="src\data\Map.cpp" />

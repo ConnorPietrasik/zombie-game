@@ -2,10 +2,13 @@
 
 //TESTING
 #include <iostream>
+#include "entities/projectiles/Bullet.h"
 
 const auto MS_PER_FRAME = std::chrono::milliseconds(10);
 
 CustomEventType PlayState::set() {
+
+    Bullet b(window, map, map->getWidth() / 2, map->getHeight() / 2, 0);
 
     while (window->isOpen())
     {
@@ -26,6 +29,12 @@ CustomEventType PlayState::set() {
 
         map->draw();
         entities.draw();
+
+
+        //TESTING
+        b.update();
+        b.draw();
+
 
         window->display();
 
