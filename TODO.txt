@@ -15,6 +15,8 @@ Game over screen
 
 MODERATE PRIORITY:
 
+Sound
+
 Pause menu
 
 Optimize hit detection, probably separating screen into quarters recursively
@@ -25,6 +27,10 @@ LOW PRIORITY:
 High scores?
 
 Shop?
+
+Add gun upgrades
+
+Add player upgrades
 
 Add new weapons
 

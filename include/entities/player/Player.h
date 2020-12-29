@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <chrono>
+#include <thread>
 #include "data/SaveData.h"
 #include "entities/player/WeaponType.h"
 #include "entities/projectiles/Projectile.h"
@@ -18,15 +19,18 @@ class Player : public Entity {
 	short magazines[SaveData::WEAPON_COUNT];
 	std::list<std::unique_ptr<Projectile>>& projectile_list;
 	std::chrono::milliseconds last_shot;
+	bool alive;
+	std::thread weapon_thread;
 
-	//Helper function for moving based on keyboard state
+	//Helper functions, declared here to avoid passing a ton of stuff
+	void weapon_checks();
 	void move();
-
-	//Helper function for shooting
 	void shoot();
+	void reload();
 
 public:
 	Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings, std::list<std::unique_ptr<Projectile>>& projectile_list);
+	~Player();
 
 	void update();
 	void equip(WeaponType type);

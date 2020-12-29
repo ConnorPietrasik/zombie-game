@@ -22,6 +22,7 @@ private:
 	float base_speed;
 	bool weapons[WEAPON_COUNT];
 	int ammo[WEAPON_COUNT];
+	int mag_caps[WEAPON_COUNT];
 	short grenades;
 
 	//Collectables
@@ -55,6 +56,11 @@ public:
     const int* getAmmo() const { return ammo; }
 	int getAmmo(WeaponType wep) { return ammo[static_cast<int>(wep)]; }
 	void setAmmo(WeaponType wep, int val) { ammo[static_cast<int>(wep)] = val; }
+	void useAmmo(WeaponType wep, int val) { ammo[static_cast<int>(wep)] -= val; }
+
+	const int* getMagCaps() const { return mag_caps; }
+	int getCapacity(WeaponType wep) { return mag_caps[static_cast<int>(wep)]; }
+	void setCapacity(WeaponType wep, int val) { mag_caps[static_cast<int>(wep)] = val; }
 
     short getGrenades() const { return grenades; }
     void setGrenades(short grenades) { this->grenades = grenades; }

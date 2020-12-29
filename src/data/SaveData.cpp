@@ -19,6 +19,7 @@ SaveData::SaveData(const std::string& name) {
 		if (!(in >> money && in >> max_health && in >> base_speed)) errLoading(name);
 		for (bool& wep : weapons) if (!(in >> wep)) errLoading(name);
 		for (int& n : ammo) if (!(in >> n)) errLoading(name);
+		for (int& n : mag_caps) if (!(in >> n)) errLoading(name);
 		if (!(in >> grenades)) errLoading(name);
 		for (bool& s : skins) if (!(in >> s)) errLoading(name);
 		int temp;
@@ -42,6 +43,8 @@ SaveData::SaveData(const std::string& name) {
 		for (int& n : ammo) n = 0;
 		ammo[static_cast<int>(WeaponType::Pistol)] = -1;	//-1 means infinite
 
+		mag_caps[static_cast<int>(WeaponType::Pistol)] = 10;	//Californian to start, standard cap is upgrade
+
 		grenades = 0;
 		for (bool& s : skins) s = false;
 		skins[static_cast<int>(PlayerSkin::Default)] = true;
@@ -63,6 +66,8 @@ void SaveData::writeToFile() {
 	for (bool wep : weapons) out << wep << ' ';
 	out << '\n';
 	for (int n : ammo) out << n << ' ';
+	out << '\n';
+	for (int n : mag_caps) out << n << ' ';
 	out << '\n';
 	out << grenades << '\n';
 	for (bool s : skins) out << s << ' ';
