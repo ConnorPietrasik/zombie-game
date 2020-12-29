@@ -1,14 +1,12 @@
 HIGHEST PRIORITY:
 
-Add magazines / reloading
-
 Make bullets kill things
 
 Improve spawning, so it's over time and can't be inside each other
 
-Make a menu to enter game
-
 Add damage / death when zombies touch player
+
+Make a menu to enter game
 
 Game over screen
 
@@ -23,6 +21,8 @@ Optimize hit detection, probably separating screen into quarters recursively
 
 
 LOW PRIORITY:
+
+More optimization
 
 High scores?
 
