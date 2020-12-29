@@ -43,6 +43,16 @@ void Player::move() {
 }
 
 void Player::shoot() {
+	std::chrono::milliseconds cur = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+
+	switch (equipped) {
+	case WeaponType::Pistol: {
+		if (cur - last_shot > std::chrono::milliseconds(500)) last_shot = cur;
+		else return;
+		break;
+	}
+	}
+
 	float mouse_x = sf::Mouse::getPosition(*window).x;
 	float mouse_y = sf::Mouse::getPosition(*window).y;
 	float gun_x = 0;

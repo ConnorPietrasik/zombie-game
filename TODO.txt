@@ -1,7 +1,5 @@
 HIGHEST PRIORITY:
 
-Add limits to shooting speed
-
 Add magazines / reloading
 
 Make bullets kill things

@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <list>
+#include <chrono>
 #include "data/SaveData.h"
 #include "entities/player/WeaponType.h"
 #include "entities/projectiles/Projectile.h"
@@ -16,6 +17,7 @@ class Player : public Entity {
 	WeaponType equipped;
 	short magazines[SaveData::WEAPON_COUNT];
 	std::list<std::unique_ptr<Projectile>>& projectile_list;
+	std::chrono::milliseconds last_shot;
 
 	//Helper function for moving based on keyboard state
 	void move();
