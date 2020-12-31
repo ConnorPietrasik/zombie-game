@@ -6,22 +6,26 @@
 
 
 class Enemy : public Entity {
-	int max_health;
 	Player* player;
 	std::list<std::unique_ptr<Enemy>>& enemy_list;
-
-	//TESTING
-	int id;
+	
+	//Texture 0 will always be dead texture, 1 is normal, and 2 is hurt
+	const std::vector<sf::Texture>& textures;
 
 	//Helper function to make sure the enemies don't just occupy the same space
 	void move();
 public:
-	Enemy(sf::RenderWindow* window, Map* map, const sf::Texture* texture, Player* player, std::list<std::unique_ptr<Enemy>>& enemy_list, int x, int y, float speed, int max_health) : Entity(window, map, texture, x, y, speed, max_health), enemy_list(enemy_list), player(player), max_health(max_health) {
+	//TESTING
+	int id;
+
+	Enemy(sf::RenderWindow* window, Map* map, const std::vector<sf::Texture>& textures, Player* player, std::list<std::unique_ptr<Enemy>>& enemy_list, int x, int y, float speed, int max_health) : Entity(window, map, &textures[1], x, y, speed, max_health), textures(textures), enemy_list(enemy_list), player(player) {
 		//TESTING
 		static int lastID = 0;
 		id = lastID++;
 	}
 
 	void update();
-	void die();
+
+	//So that it changes to dead texture
+	void hurt(int amount);
 };

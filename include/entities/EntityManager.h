@@ -15,7 +15,7 @@ class EntityManager {
 	Player player;
 	std::list<std::unique_ptr<Projectile>> projectiles;
 	std::list<std::unique_ptr<Enemy>> enemies;
-	std::queue<std::unique_ptr<Enemy>> dead_enemies;
+	std::list<std::unique_ptr<Enemy>> dead_enemies;
 	sf::RenderWindow* window;
 	Settings* settings;
 

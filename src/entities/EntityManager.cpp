@@ -21,11 +21,29 @@ void EntityManager::updatePlayer() {
 
 void EntityManager::updateProjectiles() {
 
-	//Can't use the easy foreach because it breaks when you remove from the middle
+	//Can't use the easy foreach because it breaks when you remove from the middle of the list
 	for (auto i = projectiles.begin(); i != projectiles.end();) {
 		(*i)->update();
 		if ((*i)->getPosition().x > map->getWidth() + 10 || (*i)->getPosition().x < -10 || (*i)->getPosition().y > map->getHeight() + 10 || (*i)->getPosition().y < -10) projectiles.remove(*i++);
-		else ++i;
+		else {
+
+			//Check each enemy to see if it touches it, then do the damage and what not
+			//Efficiency should definitely be improved later
+			bool touched = false;
+			for (auto iter_enemy = enemies.begin(); !touched && iter_enemy != enemies.end();) {
+				if ((*i)->isTouching((*iter_enemy).get())) {
+					touched = true;
+					(*iter_enemy)->hurt((*i)->getDamage());
+					projectiles.remove(*i++);
+					if (!(*iter_enemy)->isAlive()) {
+						dead_enemies.emplace_back(std::move(*iter_enemy));
+						enemies.remove(nullptr);
+					}
+				}
+				else ++iter_enemy;
+			}
+			if (!touched) ++i;
+		}
 	}
 
 }
@@ -46,6 +64,7 @@ void EntityManager::spawnEnemy(EnemyType type, int amount) {
 }
 
 void EntityManager::draw() {
+	for (auto& e : dead_enemies) e->draw();
 	player.draw();
 	for (auto& p : projectiles) p->draw();
 	for (auto& e : enemies) e->draw();

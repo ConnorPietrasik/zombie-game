@@ -38,18 +38,16 @@ Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* set
 		}
 	}
 
-	alive = true;
-
 	weapon_thread = std::thread(&Player::weapon_checks, this);
 }
 
 Player::~Player() {
-	alive = false;
+	health = 0;
 	weapon_thread.join();
 }
 
 void Player::weapon_checks() {
-	while (alive) {
+	while (isAlive()) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) shoot();
 		if (sf::Keyboard::isKeyPressed(settings->getKeyReload())) reload();
 	}

@@ -27,3 +27,8 @@ void Enemy::update() {
 	move();
 	sprite.setRotation(getAngle(player->getPosition()) * 180 / PI + 90);
 }
+
+void Enemy::hurt(int amount) {
+	Entity::hurt(amount);
+	if (!isAlive()) sprite.setTexture(textures[0]);
+}

@@ -19,7 +19,6 @@ class Player : public Entity {
 	short magazines[SaveData::WEAPON_COUNT];
 	std::list<std::unique_ptr<Projectile>>& projectile_list;
 	std::chrono::milliseconds last_shot;
-	bool alive;
 	std::thread weapon_thread;
 
 	//Helper functions, declared here to avoid passing a ton of stuff
@@ -35,6 +34,4 @@ public:
 	void update();
 	void equip(WeaponType type);
 	void unlockWeapon(WeaponType type);
-	void hurt(int amount);
-	void heal(int amount);
 };
