@@ -13,6 +13,5 @@ bullet_textures: path_to_bullet_textures_dir(string)
 zombie_count: num(int)
 zombie_textures: path_to_zombie_textures_dir(string)
 ```
-<sub><sup>Note: entities only need one texture in the directory, but can include more for some animation  
-Note2: location and dimension integers are in pixels  
-Note3: spawn_location can be repeated as many times as desired to create more possible spawning locations.</sup></sub>  
+<sub><sup> Note: location and dimension integers are in pixels  
+Note2: spawn_location can be repeated as many times as desired to create more possible spawning locations.</sup></sub>  
