@@ -36,6 +36,7 @@
     <ClInclude Include="include\entities\projectiles\Projectile.h" />
     <ClInclude Include="include\entities\projectiles\ProjectileType.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\game_states\GameType.h" />
     <ClInclude Include="include\game_states\MainMenuState.h" />
     <ClInclude Include="include\game_states\PauseState.h" />
     <ClInclude Include="include\game_states\PlayState.h" />
@@ -48,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\entities\projectiles\Projectile.cpp" />
-    <ClCompile Include="include\game_states\PlayState.cpp" />
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp" />
     <ClCompile Include="src\data\Map.cpp" />
     <ClCompile Include="src\data\SaveData.cpp" />
@@ -58,6 +58,7 @@
     <ClCompile Include="src\entities\EntityManager.cpp" />
     <ClCompile Include="src\entities\player\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\game_states\PlayState.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\menus\buttons\Button.cpp" />
     <ClCompile Include="src\menus\buttons\DefaultSettingsButton.cpp" />

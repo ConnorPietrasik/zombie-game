@@ -3,7 +3,8 @@
 #include <random>
 #include "entities/enemies/Zombie.h"
 
-EntityManager::EntityManager(Map* map, sf::RenderWindow* window, SaveData* data, Settings* settings) : map(map), window(window), player(window, map, data, settings, projectiles), settings(settings) {
+EntityManager::EntityManager(Map* map, sf::RenderWindow* window, SaveData* data, Settings* settings, GameType mode) : 
+	map(map), window(window), player(window, map, data, settings, projectiles), settings(settings), mode(mode) {
 	for (int type = 0; type < map->getEnemyCounts().size(); type++) {
 		spawnEnemy(static_cast<EnemyType>(type), map->getEnemyCounts()[type]);
 	}
@@ -50,6 +51,11 @@ void EntityManager::updateProjectiles() {
 
 void EntityManager::updateEnemies() {
 	for (auto& e : enemies) e->update();
+
+	static std::minstd_rand rand(std::random_device{}());
+	if (mode == GameType::Hoard) {
+		if (rand() % 100 == 1) spawnEnemy(EnemyType::Zombie, 1);
+	}
 }
 
 void EntityManager::spawnEnemy(EnemyType type, int amount) {
@@ -58,8 +64,24 @@ void EntityManager::spawnEnemy(EnemyType type, int amount) {
 
 	for (int i = 0; i < amount; i++) {
 		auto locs = map->getSpawnLocations();
-		int area = rand() % locs.size();
-		if (type == EnemyType::Zombie) enemies.push_back(std::make_unique<Zombie>(window, map, &player, enemies, locs[area].left + rand() % locs[area].width, locs[area].top + rand() % locs[area].height));
+
+		//Makes sure enemies don't spawn inside each other, is ugly should improve TODO
+		bool bad;
+		int area, x, y;
+		do {
+			bad = false;
+			area = rand() % locs.size();
+			x = locs[area].left + rand() % locs[area].width;
+			y = locs[area].top + rand() % locs[area].height;
+			for (auto& e : enemies) {
+				if (e->isTouching(sf::Vector2f(x, y))) {
+					bad = true;
+					break;
+				}
+			}
+		} while (bad);
+
+		if (type == EnemyType::Zombie) enemies.push_back(std::make_unique<Zombie>(window, map, &player, enemies, x, y));
 	}
 }
 

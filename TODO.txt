@@ -4,14 +4,14 @@ Improve spawning, so it's over time and can't be inside each other
 
 Add damage / death when zombies touch player
 
+Sound
+
 Make a menu to enter game
 
 Game over screen
 
 
 MODERATE PRIORITY:
-
-Sound
 
 Pause menu
 

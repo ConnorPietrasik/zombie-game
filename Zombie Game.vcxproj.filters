@@ -153,6 +153,9 @@
     <ClInclude Include="include\entities\projectiles\ProjectileType.h">
       <Filter>Header Files\entities\projectiles</Filter>
     </ClInclude>
+    <ClInclude Include="include\game_states\GameType.h">
+      <Filter>Header Files\game_states</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\custom_events\CustomEventQueue.cpp">
@@ -197,11 +200,11 @@
     <ClCompile Include="src\entities\EntityManager.cpp">
       <Filter>Source Files\entities</Filter>
     </ClCompile>
-    <ClCompile Include="include\game_states\PlayState.cpp">
-      <Filter>Source Files\game_states</Filter>
-    </ClCompile>
     <ClCompile Include="include\entities\projectiles\Projectile.cpp">
       <Filter>Source Files\entities\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_states\PlayState.cpp">
+      <Filter>Source Files\game_states</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

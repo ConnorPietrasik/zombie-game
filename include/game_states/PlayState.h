@@ -5,6 +5,7 @@
 #include "data/Map.h"
 #include "data/SaveData.h"
 #include "custom_events/CustomEvent.h"
+#include "game_states/GameType.h"
 
 class PlayState {
 	sf::RenderWindow* window;
@@ -14,7 +15,7 @@ class PlayState {
 	SaveData* data;
 
 public:
-	PlayState(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings) : window(window), map(std::move(map)), data(data), entities(map, window, data, settings) {}
+	PlayState(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings, GameType mode) : window(window), map(std::move(map)), data(data), entities(map, window, data, settings, mode) {}
 
 	CustomEventType set();
 };
