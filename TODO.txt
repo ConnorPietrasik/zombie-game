@@ -1,7 +1,5 @@
 HIGHEST PRIORITY:
 
-Make zombies flash when hit
-
 Improve spawning, so it's over time and can't be inside each other
 
 Add damage / death when zombies touch player

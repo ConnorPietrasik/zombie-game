@@ -14,6 +14,8 @@ class Enemy : public Entity {
 
 	//Helper function to make sure the enemies don't just occupy the same space
 	void move();
+
+	void hurtFlash();
 public:
 	//TESTING
 	int id;
