@@ -13,15 +13,18 @@ Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* set
 	switch (data->getActiveSkin()) {
 	case PlayerSkin::Default: {
 		textures.resize(SaveData::WEAPON_COUNT);
-		textures[static_cast<int>(WeaponType::Pistol)].loadFromFile(settings->getDefaultPlayerTexturesDir() + "pistol.png");
+		for (int i = 0; i < SaveData::WEAPON_COUNT; i++) textures[i].resize(3);
+		textures[static_cast<int>(WeaponType::Pistol)][0].loadFromFile(settings->getDefaultPlayerTexturesDir() + "pistol.png");
+		textures[static_cast<int>(WeaponType::Pistol)][1].loadFromFile(settings->getDefaultPlayerTexturesDir() + "pistol_firing.png");
+		textures[static_cast<int>(WeaponType::Pistol)][2].loadFromFile(settings->getDefaultPlayerTexturesDir() + "pistol_hurt.png");
 	}
 	}
 
-	sprite.setTexture(textures[static_cast<int>(WeaponType::Pistol)]);
+	sprite.setTexture(textures[static_cast<int>(WeaponType::Pistol)][0]);
 	sprite.setOrigin(sprite.getTextureRect().width / 2, sprite.getTextureRect().height / 2);
 	sprite.setPosition(map->getWidth() / 2, map->getHeight() / 2);
 
-	last_shot = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+	last_hurt = last_shot = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
 
 	for (int i = 0; i < SaveData::WEAPON_COUNT; i++) {
 		WeaponType wep = static_cast<WeaponType>(i);
@@ -38,7 +41,7 @@ Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* set
 		}
 	}
 
-	weapon_thread = std::thread(&Player::weapon_checks, this);
+	weapon_thread = std::thread(&Player::weaponChecks, this);
 }
 
 Player::~Player() {
@@ -46,7 +49,8 @@ Player::~Player() {
 	weapon_thread.join();
 }
 
-void Player::weapon_checks() {
+//To do all the weapon stuff in a separate thread for simplicity / efficiency
+void Player::weaponChecks() {
 	while (isAlive()) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) shoot();
 		if (sf::Keyboard::isKeyPressed(settings->getKeyReload())) reload();
@@ -56,13 +60,11 @@ void Player::weapon_checks() {
 void Player::shoot() {
 	std::chrono::milliseconds cur = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
 
-	switch (equipped) {
-	case WeaponType::Pistol: {
-		if (cur - last_shot > std::chrono::milliseconds(500)) last_shot = cur;
-		else return;
-		break;
-	}
-	}
+	//Can't fire while invincible
+	if (cur < last_hurt + data->getInvincibilityTime()) return;
+
+	if (cur - last_shot > data->getFiringDelay(equipped)) last_shot = cur;
+	else return;
 
 	if (magazines[static_cast<int>(equipped)] < 1) {
 		return;
@@ -86,11 +88,16 @@ void Player::shoot() {
 
 	projectile_list.push_back(std::make_unique<Bullet>(window, map, projectile_list, gun_x, gun_y, atan2(mouse_x - gun_x, gun_y - mouse_y) - PI / 2));
 	magazines[static_cast<int>(equipped)]--;
+	sprite.setTexture(textures[static_cast<int>(equipped)][1]);
+	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+	//So that it doesn't cancel a hurt flash
+	if (cur > last_hurt) sprite.setTexture(textures[static_cast<int>(equipped)][0]);
 }
 
 void Player::reload() {
 
-	//Should replace all the sleeps with waiting until sound effect finishes
+	//Should probably replace all the sleeps with waiting until sound effect finishes
 	if (data->getAmmo(equipped) < 0) {
 		magazines[static_cast<int>(equipped)] = data->getCapacity(equipped);
 		std::this_thread::sleep_for(std::chrono::milliseconds(2000));
@@ -131,4 +138,8 @@ void Player::move() {
 void Player::update() {
 	move();
 	sprite.setRotation(getAngle(sf::Mouse::getPosition(*window)) * 180 / PI + 90);
+}
+
+void Player::hurt(int amount) {
+
 }

@@ -16,13 +16,18 @@ SaveData::SaveData(const std::string& name) {
 	if (in.is_open()) {
 
 		//Loads everything in and logs/throws if something fails
-		if (!(in >> money && in >> max_health && in >> base_speed)) errLoading(name);
+		unsigned int temp;
+		if (!(in >> money && in >> max_health && in >> base_speed && in >> temp)) errLoading(name);
+		invincibility_time = std::chrono::milliseconds(temp);
 		for (bool& wep : weapons) if (!(in >> wep)) errLoading(name);
 		for (int& n : ammo) if (!(in >> n)) errLoading(name);
 		for (int& n : mag_caps) if (!(in >> n)) errLoading(name);
+		for (auto& d : firing_delays) {
+			if (!(in >> temp)) errLoading(name);
+			d = std::chrono::milliseconds(temp);
+		}
 		if (!(in >> grenades)) errLoading(name);
 		for (bool& s : skins) if (!(in >> s)) errLoading(name);
-		int temp;
 		if (!(in >> temp)) errLoading(name);
 		active_skin = static_cast<PlayerSkin>(temp);
 		for (int& n : kills) if (!(in >> n)) errLoading(name);
@@ -35,6 +40,7 @@ SaveData::SaveData(const std::string& name) {
 		this->name = name;
 		money = 0;
 		max_health = 100;
+		invincibility_time = std::chrono::milliseconds(200);
 		base_speed = 2.0f;
 
 		for (bool& wep : weapons) wep = false;
@@ -44,6 +50,8 @@ SaveData::SaveData(const std::string& name) {
 		ammo[static_cast<int>(WeaponType::Pistol)] = -1;	//-1 means infinite
 
 		mag_caps[static_cast<int>(WeaponType::Pistol)] = 10;	//Californian to start, standard cap is upgrade
+
+		firing_delays[static_cast<int>(WeaponType::Pistol)] = std::chrono::milliseconds(500);
 
 		grenades = 0;
 		for (bool& s : skins) s = false;
@@ -63,11 +71,14 @@ void SaveData::writeToFile() {
 	out << money << '\n';
 	out << max_health << '\n';
 	out << std::setprecision(3) << base_speed << '\n';
+	out << invincibility_time.count() << '\n';
 	for (bool wep : weapons) out << wep << ' ';
 	out << '\n';
 	for (int n : ammo) out << n << ' ';
 	out << '\n';
 	for (int n : mag_caps) out << n << ' ';
+	out << '\n';
+	for (auto& d : firing_delays) out << d.count() << ' ';
 	out << '\n';
 	out << grenades << '\n';
 	for (bool s : skins) out << s << ' ';

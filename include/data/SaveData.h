@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <chrono>
 #include "entities/player/PlayerSkin.h"
 #include "entities/player/WeaponType.h"
 #include "entities/enemies/EnemyType.h"
@@ -20,9 +21,12 @@ private:
 	int money;
 	int max_health;
 	float base_speed;
+	std::chrono::milliseconds invincibility_time;
 	bool weapons[WEAPON_COUNT];
 	int ammo[WEAPON_COUNT];
 	int mag_caps[WEAPON_COUNT];
+	std::chrono::milliseconds firing_delays[WEAPON_COUNT];
+	
 	short grenades;
 
 	//Collectables
@@ -50,6 +54,9 @@ public:
     float getBaseSpeed() const { return base_speed; }
     void setBaseSpeed(float base_speed) { this->base_speed = base_speed; }
 
+	const std::chrono::milliseconds& getInvincibilityTime() const { return invincibility_time; }
+	void setInvincibilityTime(unsigned int milliseconds) { invincibility_time = std::chrono::milliseconds(milliseconds); }
+
     const bool* getWeapons() const { return weapons; }
 	void setWeapon(WeaponType wep, bool val) { weapons[static_cast<int>(wep)] = val; }
 
@@ -61,6 +68,10 @@ public:
 	const int* getMagCaps() const { return mag_caps; }
 	int getCapacity(WeaponType wep) { return mag_caps[static_cast<int>(wep)]; }
 	void setCapacity(WeaponType wep, int val) { mag_caps[static_cast<int>(wep)] = val; }
+
+	const std::chrono::milliseconds* getFiringDelays() const { return firing_delays; }
+	const std::chrono::milliseconds& getFiringDelay(WeaponType wep) { return firing_delays[static_cast<int>(wep)]; }
+	void setFiringDelay(WeaponType wep, unsigned int milliseconds) { firing_delays[static_cast<int>(wep)] = std::chrono::milliseconds(milliseconds); }
 
     short getGrenades() const { return grenades; }
     void setGrenades(short grenades) { this->grenades = grenades; }

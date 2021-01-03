@@ -12,17 +12,20 @@
 #include "data/Settings.h"
 
 class Player : public Entity {
-	std::vector<sf::Texture> textures;
+	//For all weapons: 0 normal, 1 firing, 2 hurt
+	std::vector<std::vector<sf::Texture>> textures;
+
 	SaveData* data;
 	Settings* settings;
 	WeaponType equipped;
 	short magazines[SaveData::WEAPON_COUNT];
 	std::list<std::unique_ptr<Projectile>>& projectile_list;
 	std::chrono::milliseconds last_shot;
+	std::chrono::milliseconds last_hurt;
 	std::thread weapon_thread;
 
 	//Helper functions, declared here to avoid passing a ton of stuff
-	void weapon_checks();
+	void weaponChecks();
 	void move();
 	void shoot();
 	void reload();
@@ -32,6 +35,7 @@ public:
 	~Player();
 
 	void update();
+	void hurt(int amount);
 	void equip(WeaponType type);
 	void unlockWeapon(WeaponType type);
 };

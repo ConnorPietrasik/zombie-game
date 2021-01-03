@@ -35,6 +35,5 @@ public:
 	void update();
 	void spawnEnemy(EnemyType enemy_type, int amount = 1);
 
-	void handleEvent(sf::Event&);
 	void draw();
 };
