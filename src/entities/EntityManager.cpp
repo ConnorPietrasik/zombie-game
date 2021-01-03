@@ -1,12 +1,27 @@
 #include "entities/EntityManager.h"
 
 #include <random>
+#include <chrono>
 #include "entities/enemies/Zombie.h"
 
 EntityManager::EntityManager(Map* map, sf::RenderWindow* window, SaveData* data, Settings* settings, GameType mode) : 
 	map(map), window(window), player(window, map, data, settings, projectiles), settings(settings), mode(mode) {
 	for (int type = 0; type < map->getEnemyCounts().size(); type++) {
 		spawnEnemy(static_cast<EnemyType>(type), map->getEnemyCounts()[type]);
+	}
+	enemy_spawning = std::thread(&EntityManager::enemySpawning, this);
+}
+
+EntityManager::~EntityManager() {
+	mode = GameType::Ended;
+	enemy_spawning.join();
+}
+
+void EntityManager::enemySpawning() {
+	std::minstd_rand rand(std::random_device{}());
+	while (mode == GameType::Hoard) {
+		spawnEnemy(EnemyType::Zombie);
+		std::this_thread::sleep_for(std::chrono::milliseconds(rand() % 5000 + 1000));
 	}
 }
 
@@ -51,11 +66,6 @@ void EntityManager::updateProjectiles() {
 
 void EntityManager::updateEnemies() {
 	for (auto& e : enemies) e->update();
-
-	static std::minstd_rand rand(std::random_device{}());
-	if (mode == GameType::Hoard) {
-		if (rand() % 100 == 1) spawnEnemy(EnemyType::Zombie, 1);
-	}
 }
 
 void EntityManager::spawnEnemy(EnemyType type, int amount) {

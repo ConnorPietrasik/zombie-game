@@ -21,17 +21,19 @@ class EntityManager {
 	sf::RenderWindow* window;
 	Settings* settings;
 	GameType mode;
+	std::thread enemy_spawning;
 
-
+	void enemySpawning();
 	void updatePlayer();
 	void updateProjectiles();
 	void updateEnemies();
 
 public:
 	EntityManager(Map* map, sf::RenderWindow* window, SaveData* data, Settings* settings, GameType mode);
+	~EntityManager();
 
 	void update();
-	void spawnEnemy(EnemyType enemy_type, int amount);
+	void spawnEnemy(EnemyType enemy_type, int amount = 1);
 
 	void handleEvent(sf::Event&);
 	void draw();

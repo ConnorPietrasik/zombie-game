@@ -1,10 +1,10 @@
 HIGHEST PRIORITY:
 
-Improve spawning, so it's over time and can't be inside each other
-
 Add damage / death when zombies touch player
 
 Sound
+
+UI show ammo / health
 
 Make a menu to enter game
 

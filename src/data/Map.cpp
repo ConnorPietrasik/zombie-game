@@ -37,7 +37,7 @@ Map::Map(sf::RenderWindow* win, Settings* settings, const std::string& name) : w
 	width = 1600;
 	height = 900;
 	projectile_textures.resize(SaveData::PROJECTILE_COUNT);
-	enemy_counts.resize(SaveData::ENEMY_COUNT, 20);
+	enemy_counts.resize(SaveData::ENEMY_COUNT, 5);
 	enemy_textures.resize(SaveData::ENEMY_COUNT);
 	
 

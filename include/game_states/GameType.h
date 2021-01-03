@@ -1,5 +1,6 @@
 #pragma once
 
 enum class GameType : short {
-	Hoard = 0
+	Ended = -1,
+	Hoard
 };
