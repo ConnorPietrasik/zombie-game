@@ -1,14 +1,14 @@
 HIGHEST PRIORITY:
 
-Add damage / death when zombies touch player
-
 Sound
 
 UI show ammo / health
 
-Make a menu to enter game
+Find out what causes the 100ms lag spikes when shooting sometimes
 
 Game over screen
+
+Make a menu to enter game
 
 
 MODERATE PRIORITY:
@@ -18,7 +18,7 @@ Pause menu
 Optimize hit detection, probably separating screen into quarters recursively
 
 
-LOW PRIORITY:
+LOW PRIORITY (not in any particular order):
 
 More optimization
 
@@ -35,5 +35,9 @@ Add new weapons
 Add new enemy types
 
 Map selection
+
+Using Views to allow bigger maps
+
+Minimap for larger maps
 
 Other mode(s?) aside from hoard

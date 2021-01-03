@@ -17,6 +17,7 @@ EntityManager::~EntityManager() {
 	enemy_spawning.join();
 }
 
+//To do the enemy spawning in its own thread
 void EntityManager::enemySpawning() {
 	std::minstd_rand rand(std::random_device{}());
 	while (mode == GameType::Hoard) {
@@ -33,6 +34,13 @@ void EntityManager::update() {
 
 void EntityManager::updatePlayer() {
 	player.update();
+
+	for (auto& e : enemies) {
+		if (e->isTouching(&player)) {
+			player.hurt(e->getDamage());
+			return;
+		}
+	}
 }
 
 void EntityManager::updateProjectiles() {

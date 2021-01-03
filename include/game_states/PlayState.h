@@ -9,7 +9,6 @@
 
 class PlayState {
 	sf::RenderWindow* window;
-	//sf::View view;
 	EntityManager entities;
 	Map* map;
 	SaveData* data;

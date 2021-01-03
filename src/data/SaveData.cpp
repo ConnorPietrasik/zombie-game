@@ -5,7 +5,7 @@
 #include "util/Logger.h"
 #include "entities/player/WeaponType.h"
 
-//Helper function to make the loading more compact
+//Helper function to / throw
 void errLoading(const std::string& name) {
 	Logger::log("ERROR: Failed to load save with name " + name);
 	throw(std::string("Failed to load save with name " + name));
@@ -39,7 +39,7 @@ SaveData::SaveData(const std::string& name) {
 		Logger::log("NOTICE: Save with name " + name + " not found, creating new save");
 		this->name = name;
 		money = 0;
-		max_health = 100;
+		max_health = 10;
 		invincibility_time = std::chrono::milliseconds(200);
 		base_speed = 2.0f;
 

@@ -23,6 +23,7 @@ class EntityManager {
 	GameType mode;
 	std::thread enemy_spawning;
 
+	//Helper functions declared here to avoid passing a ton of stuff
 	void enemySpawning();
 	void updatePlayer();
 	void updateProjectiles();

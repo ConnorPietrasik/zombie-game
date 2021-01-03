@@ -2,6 +2,7 @@
 
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <ctime>
 #include <iomanip>
 #include <mutex>

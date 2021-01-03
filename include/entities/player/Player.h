@@ -24,7 +24,7 @@ class Player : public Entity {
 	std::chrono::milliseconds last_hurt;
 	std::thread weapon_thread;
 
-	//Helper functions, declared here to avoid passing a ton of stuff
+	//Helper functions declared here to avoid passing a ton of stuff
 	void weaponChecks();
 	void move();
 	void shoot();

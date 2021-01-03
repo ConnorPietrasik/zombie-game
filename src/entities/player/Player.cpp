@@ -7,6 +7,11 @@
 //Throwing this up here so it's consistent within the class
 const float PI = 3.1415927f;
 
+//Making this because chrono stuff is a huge mess, and compiler will probably optimize it away anyway
+std::chrono::milliseconds currentTime() {
+	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+}
+
 Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* settings, std::list<std::unique_ptr<Projectile>>& projectile_list) : 
 	Entity(window, map, 30, data->getBaseSpeed(), data->getMaxHealth()), data(data), settings(settings), equipped(WeaponType::Pistol), projectile_list(projectile_list) {
 
@@ -24,7 +29,7 @@ Player::Player(sf::RenderWindow* window, Map* map, SaveData* data, Settings* set
 	sprite.setOrigin(sprite.getTextureRect().width / 2, sprite.getTextureRect().height / 2);
 	sprite.setPosition(map->getWidth() / 2, map->getHeight() / 2);
 
-	last_hurt = last_shot = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+	last_hurt = last_shot = currentTime();
 
 	for (int i = 0; i < SaveData::WEAPON_COUNT; i++) {
 		WeaponType wep = static_cast<WeaponType>(i);
@@ -58,17 +63,17 @@ void Player::weaponChecks() {
 }
 
 void Player::shoot() {
-	std::chrono::milliseconds cur = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+	std::chrono::milliseconds now = currentTime();
 
-	//Can't fire while invincible
-	if (cur < last_hurt + data->getInvincibilityTime()) return;
+	//Can't fire if delay hasn't passed or while invincible
+	if (now < last_hurt + data->getInvincibilityTime() || now < last_shot + data->getFiringDelay(equipped)) return;
 
-	if (cur - last_shot > data->getFiringDelay(equipped)) last_shot = cur;
-	else return;
-
-	if (magazines[static_cast<int>(equipped)] < 1) {
+	//Can't fire if empty mag, make clicking noise (visually showing the slide stuck back is too hard) TODO
+	if (magazines[static_cast<int>(equipped)] == 0) {
 		return;
 	}
+
+	last_shot = now;
 
 	float mouse_x = sf::Mouse::getPosition(*window).x;
 	float mouse_y = sf::Mouse::getPosition(*window).y;
@@ -92,12 +97,12 @@ void Player::shoot() {
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
 	//So that it doesn't cancel a hurt flash
-	if (cur > last_hurt) sprite.setTexture(textures[static_cast<int>(equipped)][0]);
+	if (now > last_hurt) sprite.setTexture(textures[static_cast<int>(equipped)][0]);
 }
 
 void Player::reload() {
 
-	//Should probably replace all the sleeps with waiting until sound effect finishes
+	//Should probably replace all the sleeps with waiting until sound effect finishes, TODO
 	if (data->getAmmo(equipped) < 0) {
 		magazines[static_cast<int>(equipped)] = data->getCapacity(equipped);
 		std::this_thread::sleep_for(std::chrono::milliseconds(2000));
@@ -137,9 +142,16 @@ void Player::move() {
 
 void Player::update() {
 	move();
+	if (sprite.getTexture() == &textures[static_cast<int>(equipped)][2] && currentTime() >= last_hurt + data->getInvincibilityTime()) 
+		sprite.setTexture(textures[static_cast<int>(equipped)][0]);
 	sprite.setRotation(getAngle(sf::Mouse::getPosition(*window)) * 180 / PI + 90);
 }
 
 void Player::hurt(int amount) {
-
+	auto now = currentTime();
+	if (now > last_hurt + data->getInvincibilityTime()) {
+		Entity::hurt(amount);
+		last_hurt = now;
+		sprite.setTexture(textures[static_cast<int>(equipped)][2]);
+	}
 }
